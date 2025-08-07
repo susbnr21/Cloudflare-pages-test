@@ -1,12 +1,391 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sushil Bhandai</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sushil Bhandari</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet" />
+  <style>
+    /* Base styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: #333;
+      background: #f8f9fa;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    section {
+      padding: 100px 20px;
+    }
+
+    h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* Navigation */
+    nav {
+      position: sticky;
+      top: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px;
+      z-index: 999;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    }
+
+    nav ul {
+      display: flex;
+      gap: 20px;
+    }
+
+    nav ul li {
+      list-style: none;
+    }
+
+    nav ul li a {
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+
+    nav ul li a:hover {
+      color: #0077ff;
+    }
+
+    /* Hero Section */
+    .hero {
+      height: 100vh;
+      background: url('./images/water.jpg') center/cover no-repeat;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    }
+
+    .hero h1 {
+      font-size: 3.5rem;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      margin: 20px 0;
+    }
+
+    .hero button {
+      padding: 12px 30px;
+      background: #0077ff;
+      border: none;
+      color: white;
+      border-radius: 30px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .hero button:hover {
+      background: #005dcc;
+    }
+
+    /* Fade-in effect */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+
+    .fade-in.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* About */
+    .about {
+      background: #ffffff;
+      text-align: center;
+    }
+
+    .about-icons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 40px;
+      margin-top: 40px;
+    }
+
+    .about-icon {
+      width: 150px;
+    }
+
+    .about-icon img {
+      width: 60px;
+      margin-bottom: 15px;
+    }
+
+    /* Services */
+    .services {
+      background: #f0f2f5;
+      text-align: center;
+    }
+
+    .cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .card {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+      width: 280px;
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+    }
+
+    /* Portfolio */
+    .portfolio .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-top: 40px;
+    }
+
+    .portfolio .grid img {
+      width: 100%;
+      border-radius: 10px;
+      transition: transform 0.3s ease, filter 0.3s ease;
+    }
+
+    .portfolio .grid img:hover {
+      transform: scale(1.05);
+      filter: brightness(1.1);
+    }
+
+    /* Testimonials */
+    .testimonials {
+      background: #ffffff;
+      text-align: center;
+    }
+
+    .carousel {
+      display: flex;
+      overflow: hidden;
+      position: relative;
+      max-width: 800px;
+      margin: 40px auto;
+    }
+
+    .testimonial {
+      min-width: 100%;
+      transition: transform 0.5s ease;
+      padding: 20px;
+    }
+
+    .testimonial p {
+      font-style: italic;
+    }
+
+    .testimonial h4 {
+      margin-top: 10px;
+    }
+
+    /* Contact */
+    .contact {
+      background: #f0f2f5;
+      text-align: center;
+    }
+
+    .contact form {
+      max-width: 600px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .contact input,
+    .contact textarea {
+      padding: 15px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+    }
+
+    .contact button {
+      padding: 12px;
+      background: #0077ff;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .about-icons,
+      .cards {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
 </head>
 <body>
-    <h1>Hello! I'm Sushil Bhandari</h1>
-    <p>This is my Cloudflare Pages Deployment test.</p>
+
+  <nav>
+    <div><strong>Mr.Sushi</strong></div>
+    <ul>
+      <li><a href="#hero">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#portfolio">Portfolio</a></li>
+      <li><a href="#testimonials">Testimonials</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <section class="hero" id="hero">
+    <h1>We Build Beautiful Web Experiences</h1>
+    <p>Creative solutions. Proven results. Seamless designs.</p>
+    <button onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Let's Talk</button>
+  </section>
+
+  <section class="about fade-in" id="about">
+    <h2>About Us</h2>
+    <div class="container about-icons">
+      <div class="about-icon">
+        <img src="https://img.icons8.com/color/96/000000/code.png" />
+        <p>Clean Code</p>
+      </div>
+      <div class="about-icon">
+        <img src="https://img.icons8.com/color/96/000000/idea.png" />
+        <p>Creative Ideas</p>
+      </div>
+      <div class="about-icon">
+        <img src="https://img.icons8.com/color/96/000000/rocket.png" />
+        <p>Fast Delivery</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="services fade-in" id="services">
+    <h2>Our Services</h2>
+    <div class="container cards">
+      <div class="card">
+        <h3>Web Design</h3>
+        <p>Responsive, elegant designs that impress on all devices.</p>
+      </div>
+      <div class="card">
+        <h3>Development</h3>
+        <p>Clean, maintainable code using the latest technologies.</p>
+      </div>
+      <div class="card">
+        <h3>Branding</h3>
+        <p>Visual identity that speaks your brand language.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="portfolio fade-in" id="portfolio">
+    <h2>Our Projects</h2>
+    <div class="container grid">
+      <img src="./images/cloud-data.png" />
+      <img src="./images/cloud-server.png" />
+      <img src="./images/security.png" />
+      <img src="./images/upload.png" />
+    </div>
+  </section>
+
+  <section class="testimonials fade-in" id="testimonials">
+    <h2>What Clients Say</h2>
+    <div class="carousel" id="carousel">
+      <div class="testimonial">
+        <p>“This team transformed our vision into reality. Highly recommended!”</p>
+        <h4>– Sarah K.</h4>
+      </div>
+      <div class="testimonial">
+        <p>“Professional, fast, and creative. Couldn’t ask for better service.”</p>
+        <h4>– Mike T.</h4>
+      </div>
+      <div class="testimonial">
+        <p>“They delivered exactly what we needed — and more.”</p>
+        <h4>– Aisha R.</h4>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact fade-in" id="contact">
+    <h2>Contact Us</h2>
+    <form>
+      <input type="text" placeholder="Your Name" required />
+      <input type="email" placeholder="Your Email" required />
+      <textarea rows="5" placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+
+  <script>
+    // Fade-in on scroll
+    const faders = document.querySelectorAll('.fade-in');
+    const appearOptions = {
+      threshold: 0.2,
+      rootMargin: "0px 0px -100px 0px"
+    };
+
+    const appearOnScroll = new IntersectionObserver(function (entries, appearOnScroll) {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('show');
+        appearOnScroll.unobserve(entry.target);
+      });
+    }, appearOptions);
+
+    faders.forEach(fader => {
+      appearOnScroll.observe(fader);
+    });
+
+    // Testimonial Carousel
+    let index = 0;
+    const carousel = document.getElementById("carousel");
+    const total = carousel.children.length;
+
+    setInterval(() => {
+      index = (index + 1) % total;
+      carousel.style.transform = `translateX(-${index * 100}%)`;
+    }, 4000);
+  </script>
 </body>
 </html>
